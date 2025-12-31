@@ -21,10 +21,84 @@
 
 <body>
 
-    <!-- 
-        Contenido principal de la página
-        (header, main y footer se agregan en los siguientes commits)
-    -->
+    <!-- ===== HEADER ===== -->
+    <header>
+        <!-- Navegación principal -->
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+
+                <!-- Marca / nombre del proyecto -->
+                <a class="navbar-brand fw-bold" href="index.html">
+                    Clima Chile
+                </a>
+
+                <!-- Botón hamburguesa (vista móvil) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                    aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Links de navegación -->
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./acerca.html">
+                                Acerca de
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main class="py-4">
+
+        <div class="container">
+
+            <!-- Sección Hero / Introducción -->
+            <section class="mb-4">
+                <div class="p-4 p-md-5 rounded-4 bg-light border">
+                    <h1 class="display-6 fw-bold mb-2">
+                        Clima en ciudades de Chile 🇨🇱
+                    </h1>
+                    <p class="mb-0">
+                        Consulta el clima actual y revisa el detalle con información
+                        de humedad, viento y pronóstico semanal.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección donde irá la grilla de ciudades -->
+            <!-- (las cards se agregan en el siguiente commit) -->
+            <section aria-label="Listado de ciudades">
+                <div class="row g-3">
+                    <!-- Cards de ciudades -->
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <p class="mb-1 fw-semibold">
+                Weather Frontend M2
+            </p>
+            <p class="mb-0 small">
+                Proyecto académico con HTML5 semántico, Bootstrap y JavaScript por Evanny Zapata.
+            </p>
+        </div>
+    </footer>
 
     <!-- Bootstrap JS Bundle (incluye Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
