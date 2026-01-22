@@ -63,6 +63,27 @@
 
         <div class="container">
 
+            <!-- Sección informativa / cierre del Home -->
+            <section class="mt-5">
+                <div class="p-4 rounded-4 bg-light border">
+                    <h2 class="h5 fw-bold mb-2">Información climática</h2>
+
+                    <p class="mb-3">
+                        Los datos presentados en esta aplicación son de carácter referencial
+                        y tienen fines académicos. Selecciona una ciudad para revisar el
+                        detalle del clima y el pronóstico semanal.
+                    </p>
+
+                    <!-- Leyenda de estados climáticos -->
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge text-bg-warning">☀️ Despejado</span>
+                        <span class="badge text-bg-secondary">☁️ Nublado</span>
+                        <span class="badge text-bg-success">🌧️ Lluvia</span>
+                        <span class="badge text-bg-info">💨 Viento</span>
+                    </div>
+                </div>
+            </section>
+
             <!-- Sección Hero / Introducción -->
             <section class="mb-4">
                 <div class="p-4 p-md-5 rounded-4 bg-light border">
@@ -76,13 +97,207 @@
                 </div>
             </section>
 
-            <!-- Sección donde irá la grilla de ciudades -->
-            <!-- (las cards se agregan en el siguiente commit) -->
             <section aria-label="Listado de ciudades">
                 <div class="row g-3">
-                    <!-- Cards de ciudades -->
+
+                    <!-- Ciudad 1 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/santiago.jpg" class="card-img-top" alt="Vista de Santiago">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">Santiago</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">27°C</span>
+                                    <span class="badge text-bg-warning ms-1">Soleado</span>
+                                </p>
+
+                                <a href="./detalles/santiago.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ciudad 2 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/valparaiso.jpg" class="card-img-top" alt="Cerros de Valparaíso">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">Valparaíso</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">21°C</span>
+                                    <span class="badge text-bg-secondary ms-1">Nublado</span>
+                                </p>
+
+                                <a href="./detalles/valparaiso.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ciudad 3 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/vina-del-mar.jpg" class="card-img-top" alt="Vista de Viña del Mar">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">Viña del Mar</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">17°C</span>
+                                    <span class="badge text-bg-secondary ms-1">Nublado</span>
+                                </p>
+
+                                <a href="./detalles/vina-del-mar.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ciudad 4 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/la-serena.jpg" class="card-img-top" alt="Vista de La Serena">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">La Serena</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">23°C</span>
+                                    <span class="badge text-bg-primary ms-1">Despejado</span>
+                                </p>
+
+                                <a href="./detalles/la-serena.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+
+
+                    <!-- Ciudad 5 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/antofagasta.jpg" class="card-img-top" alt="Costa de Antofagasta">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">Antofagasta</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">24°C</span>
+                                    <span class="badge text-bg-info ms-1">Brisa</span>
+                                </p>
+
+                                <a href="./detalles/antofagasta.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ciudad 6 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/iquique.jpg" class="card-img-top" alt="Playa de Iquique">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">Iquique</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">23°C</span>
+                                    <span class="badge text-bg-primary ms-1">Despejado</span>
+                                </p>
+
+                                <a href="./detalles/iquique.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ciudad 7 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/concepcion.jpg" class="card-img-top"
+                                alt="Vista urbana de Concepción">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">Concepción</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">18°C</span>
+                                    <span class="badge text-bg-secondary ms-1">Nublado</span>
+                                </p>
+
+                                <a href="./detalles/concepcion.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ciudad 8 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/temuco.jpg" class="card-img-top" alt="Paisaje de Temuco">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">Temuco</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">15°C</span>
+                                    <span class="badge text-bg-success ms-1">Llovizna</span>
+                                </p>
+
+                                <a href="./detalles/temuco.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ciudad 9 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/puerto-montt.jpg" class="card-img-top"
+                                alt="Costanera de Puerto Montt">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">Puerto Montt</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">13°C</span>
+                                    <span class="badge text-bg-success ms-1">Lluvia</span>
+                                </p>
+
+                                <a href="./detalles/puerto-montt.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ciudad 10 -->
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="./assets/img/punta-arenas.jpg" class="card-img-top" alt="Paisaje de Punta Arenas">
+                            <div class="card-body">
+                                <h2 class="h5 card-title mb-1">Punta Arenas</h2>
+
+                                <p class="mb-2">
+                                    <span class="fw-bold">8°C</span>
+                                    <span class="badge text-bg-dark ms-1">Viento</span>
+                                </p>
+
+                                <a href="./detalles/punta-arenas.html" class="btn btn-sm btn-primary">
+                                    Ver detalle
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+
                 </div>
             </section>
+
 
         </div>
 
