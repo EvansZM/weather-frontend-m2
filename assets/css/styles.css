@@ -1,0 +1,63 @@
+/* ===============================
+   Aurora Theme (sin romper Bootstrap)
+   =============================== */
+
+/* Fondo general suave para que las cards destaquen */
+body {
+  background-color: #f6f8fb; /* gris muy clarito */
+}
+
+/* Navbar: azul noche elegante */
+.navbar {
+  background-color: #0b1220 !important; /* tono aurora/noche */
+}
+
+/* Marca: un poco más llamativa */
+.navbar .navbar-brand {
+  letter-spacing: 0.3px;
+}
+
+/* Hero y cajas informativas: sombra suave (look “app”) */
+main .bg-light.border {
+  background-color: #ffffff !important;
+  border-color: #e8eef6 !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+/* Cards: borde más suave + sombra ligera */
+.card {
+  border-color: #e8eef6;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Hover sutil (sin jQuery) */
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.10);
+}
+
+/* Imágenes de cards uniformes */
+.card .card-img-top {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Botón primario: celeste aurora */
+.btn-primary {
+  background-color: #2b8cff;
+  border-color: #2b8cff;
+}
+
+.btn-primary:hover {
+  background-color: #1f7ae6;
+  border-color: #1f7ae6;
+}
+
+/* Footer coherente con la navbar */
+footer.bg-dark {
+  background-color: #0b1220 !important;
+}

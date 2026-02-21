@@ -1,5 +1,5 @@
-# Weather Frontend M2 🌦️
-
+# Aurora · Tu clima en Chile 🌦️
+ 
 Proyecto frontend (MVP) de una aplicación de clima desarrollado con HTML5 semántico,
 Bootstrap y JavaScript (jQuery), como parte del módulo M2.
 
@@ -24,6 +24,7 @@ weather-frontend-m2/
 │   ├── js/
 │   │   └── main.js
 │   └── img/
+│      └── imagenes.webp
 ├── detalles/
 └── README.md
 
