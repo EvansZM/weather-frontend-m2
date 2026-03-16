@@ -1,0 +1,61 @@
+/* =========================================
+   DETALLE.CSS
+   Estilos exclusivos para páginas de detalle
+   ========================================= */
+
+/* Caja principal de las secciones destacadas del detalle */
+.caja-detalle {
+  background-color: #ffffff !important; /* fuerza fondo blanco limpio */
+  border-color: #e8eef6 !important; /* borde suave */
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06); /* sombra suave */
+}
+
+/* Imagen principal de la ciudad en la vista detalle */
+.img-detalle-ciudad {
+  height: 260px; /* altura más grande que las cards del home */
+  width: 100%; /* ocupa todo el ancho disponible */
+  object-fit: cover; /* evita deformación */
+  object-position: center; /* centra la imagen */
+}
+
+/* Tarjetas pequeñas de información de la ciudad */
+.tarjeta-info-ciudad {
+  border-color: #e8eef6; /* borde suave */
+}
+
+/* Tarjetas de métricas del clima actual */
+.tarjeta-metrica {
+  border-color: #e8eef6; /* mantiene coherencia visual */
+}
+
+/* Tarjetas del pronóstico semanal */
+.tarjeta-pronostico {
+  border-color: #e8eef6; /* borde consistente */
+}
+
+/* Badge personalizado para 'Parcialmente nublado' */
+.badge-aurora-sky {
+  background-color: #2b8cff; /* azul aurora */
+  color: #ffffff; /* texto blanco */
+}
+
+/* Mejora visual del breadcrumb */
+.breadcrumb-item a {
+  text-decoration: none; /* quita subrayado por defecto */
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline; /* lo muestra al pasar el mouse */
+}
+
+/* Ajuste visual para títulos de métricas */
+.tarjeta-metrica .display-6 {
+  line-height: 1.1; /* compacta un poco el número */
+}
+
+/* En pantallas pequeñas, baja un poco la imagen principal */
+@media (max-width: 576px) {
+  .img-detalle-ciudad {
+    height: 220px; /* altura más cómoda para móvil */
+  }
+}
