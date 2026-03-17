@@ -1,0 +1,20 @@
+/* Caja principal de la página acerca */
+.caja-acerca {
+  background-color: #ffffff !important; /* fondo blanco limpio */
+  border-color: #e8eef6 !important; /* borde suave */
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06); /* sombra suave */
+}
+
+/* Tarjetas de tecnologías */
+.tarjeta-acerca {
+  border-color: #e8eef6; /* mantiene coherencia visual */
+}
+
+/* Breadcrumb más limpio */
+.breadcrumb-item a {
+  text-decoration: none; /* quita subrayado */
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline; /* subrayado al pasar el mouse */
+}

@@ -41,16 +41,19 @@
                 <!-- Links de navegación -->
                 <div class="collapse navbar-collapse" id="navbarMain">
                     <ul class="navbar-nav ms-auto">
+
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">
+                            <a class="nav-link" href="#" onclick="irHomeRaiz(); return false;">
                                 Home
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="./acerca.html">
+                            <a class="nav-link" href="#" onclick="irAcercaRaiz(); return false;">
                                 Acerca de
                             </a>
                         </li>
+
                     </ul>
                 </div>
 
@@ -114,9 +117,8 @@
                                     <span class="badge text-bg-warning ms-1">Soleado</span>
                                 </p>
 
-                                <a href="./detalles/santiago.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('santiago')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
 
                             </div>
                         </div>
@@ -134,9 +136,9 @@
                                     <span class="badge text-bg-secondary ms-1">Nublado</span>
                                 </p>
 
-                                <a href="./detalles/valparaiso.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('valparaiso')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
+
                             </div>
                         </div>
                     </article>
@@ -153,9 +155,9 @@
                                     <span class="badge text-bg-secondary ms-1">Nublado</span>
                                 </p>
 
-                                <a href="./detalles/vina-del-mar.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('vina-del-mar')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
+
                             </div>
                         </div>
                     </article>
@@ -172,9 +174,9 @@
                                     <span class="badge text-bg-primary ms-1">Despejado</span>
                                 </p>
 
-                                <a href="./detalles/la-serena.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('la-serena')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
+
                             </div>
                         </div>
                     </article>
@@ -193,9 +195,8 @@
                                     <span class="badge text-bg-info ms-1">Brisa</span>
                                 </p>
 
-                                <a href="./detalles/antofagasta.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('antofagasta')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
                             </div>
                         </div>
                     </article>
@@ -212,9 +213,8 @@
                                     <span class="badge text-bg-primary ms-1">Despejado</span>
                                 </p>
 
-                                <a href="./detalles/iquique.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('iquique')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
                             </div>
                         </div>
                     </article>
@@ -232,9 +232,8 @@
                                     <span class="badge text-bg-secondary ms-1">Nublado</span>
                                 </p>
 
-                                <a href="./detalles/concepcion.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('concepcion')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
                             </div>
                         </div>
                     </article>
@@ -251,9 +250,8 @@
                                     <span class="badge text-bg-success ms-1">Llovizna</span>
                                 </p>
 
-                                <a href="./detalles/temuco.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('temuco')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
                             </div>
                         </div>
                     </article>
@@ -271,9 +269,8 @@
                                     <span class="badge text-bg-success ms-1">Lluvia</span>
                                 </p>
 
-                                <a href="./detalles/puerto-montt.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('puerto-montt')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
                             </div>
                         </div>
                     </article>
@@ -291,9 +288,8 @@
                                     <span class="badge text-bg-dark ms-1">Viento</span>
                                 </p>
 
-                                <a href="./detalles/punta-arenas.html" class="btn btn-primary btn-lg w-100">
-                                    Ver detalle
-                                </a>
+                                <button onclick="irDetalle('punta-arenas')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
                             </div>
                         </div>
                     </article>
@@ -308,7 +304,8 @@
                                     <span class="fw-bold">26°C</span>
                                     <span class="badge text-bg-warning ms-1">Soleado</span>
                                 </p>
-                                <a href="./detalles/arica.html" class="btn btn-primary btn-lg w-100">Ver detalle</a>
+                                <button onclick="irDetalle('arica')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
                             </div>
                         </div>
                     </article>
@@ -323,7 +320,8 @@
                                     <span class="fw-bold">12°C</span>
                                     <span class="badge text-bg-success ms-1">Lluvia</span>
                                 </p>
-                                <a href="./detalles/valdivia.html" class="btn btn-primary btn-lg w-100">Ver detalle</a>
+                                <button onclick="irDetalle('valdivia')" class="btn btn-primary btn-lg w-100">Ver
+                                    detalle</button>
                             </div>
                         </div>
                     </article>

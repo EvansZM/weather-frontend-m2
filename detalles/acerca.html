@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Codificación -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título -->
+    <title>Aurora · Acerca de</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+    <!-- CSS general -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <!-- CSS detalle (lo reutilizamos para mantener estilo) -->
+    <link rel="stylesheet" href="../assets/css/detalle.css">
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+
+                <!-- Marca -->
+                <a class="navbar-brand fw-bold" href="#" onclick="irHome(); return false;">
+                    Aurora
+                </a>
+
+                <!-- Botón móvil -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAcerca">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navegación -->
+                <div class="collapse navbar-collapse" id="navbarAcerca">
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="irHome(); return false;">
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="nav-link active">Acerca de</span>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main class="py-4">
+        <div class="container">
+
+            <!-- ===== HERO ===== -->
+            <section class="mb-4">
+                <div class="p-4 p-md-5 rounded-4 bg-light border text-center caja-detalle">
+
+                    <!-- Breadcrumb -->
+                    <nav class="mb-3">
+                        <ol class="breadcrumb justify-content-center mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="#" onclick="irHome(); return false;">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Acerca de
+                            </li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="display-6 fw-bold mb-2">
+                        Sobre Aurora 🌦️
+                    </h1>
+
+                    <p class="mb-0">
+                        Una aplicación simple y visual para consultar el clima en distintas
+                        ciudades de Chile.
+                    </p>
+
+                </div>
+            </section>
+
+            <!-- ===== SOBRE EL PROYECTO ===== -->
+            <section class="mb-4">
+                <div class="p-4 rounded-4 bg-light border caja-detalle">
+
+                    <h2 class="h4 fw-bold mb-3">Sobre el proyecto</h2>
+
+                    <p>
+                        Aurora es un proyecto académico desarrollado con HTML, CSS,
+                        Bootstrap y JavaScript. Su objetivo es mostrar información
+                        climática de forma clara, ordenada y fácil de usar.
+                    </p>
+
+                    <p class="mb-0">
+                        Este proyecto busca reforzar conceptos como estructura semántica,
+                        navegación entre páginas y diseño responsive.
+                    </p>
+
+                </div>
+            </section>
+
+            <!-- ===== TECNOLOGÍAS ===== -->
+            <section class="mb-4">
+                <h2 class="h4 fw-bold mb-3">Tecnologías utilizadas</h2>
+
+                <div class="row g-3">
+
+                    <article class="col-12 col-md-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h6">HTML5</h3>
+                                <p class="mb-0">Estructura semántica del sitio.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="col-12 col-md-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h6">CSS3</h3>
+                                <p class="mb-0">Estilos personalizados.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="col-12 col-md-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h6">Bootstrap</h3>
+                                <p class="mb-0">Diseño responsive y componentes.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="col-12 col-md-6 col-lg-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h6">JavaScript</h3>
+                                <p class="mb-0">Navegación entre páginas.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ===== OBJETIVO ===== -->
+            <section class="mb-4">
+                <div class="p-4 rounded-4 bg-light border caja-detalle">
+
+                    <h2 class="h4 fw-bold mb-3">Objetivo</h2>
+
+                    <p class="mb-0">
+                        Ofrecer una experiencia simple para consultar el clima y practicar
+                        los fundamentos del desarrollo frontend.
+                    </p>
+
+                </div>
+            </section>
+
+            <!-- ===== AUTOR ===== -->
+            <section>
+                <div class="p-4 rounded-4 bg-light border caja-detalle">
+
+                    <h2 class="h4 fw-bold mb-3">Autor</h2>
+
+                    <p class="mb-1"><strong>Nombre:</strong> Evanny Zapata</p>
+                    <p class="mb-0"><strong>Proyecto:</strong> Aurora · Tu clima en Chile</p>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <p class="mb-1 fw-semibold">Aurora · Tu clima en Chile</p>
+            <p class="mb-0 small">
+                Proyecto académico con HTML5, Bootstrap y JavaScript.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+</body>
+</html>
