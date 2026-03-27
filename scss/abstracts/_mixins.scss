@@ -1,0 +1,37 @@
+/* =========================================================
+   ARCHIVO: _mixins.scss
+   FUNCIÓN: Guardar mixins reutilizables para paneles, cards y centrado
+   ========================================================= */
+
+@use './variables' as *;
+
+/* ----- Mixin para paneles suaves blancos ----- */
+@mixin panel-soft {
+  background-color: $color-white;
+  border: 1px solid $color-border-soft;
+  box-shadow: $shadow-md;
+  border-radius: $radius-md;
+}
+
+/* ----- Mixin para cards reutilizables ----- */
+@mixin card-base {
+  border: 1px solid $color-border-soft;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  background-color: $color-white;
+  overflow: hidden;
+}
+
+/* ----- Mixin para centrar contenido con flex ----- */
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----- Mixin para títulos de sección ----- */
+@mixin section-title {
+  margin-bottom: $space-md;
+  font-weight: 700;
+  color: $color-text;
+}

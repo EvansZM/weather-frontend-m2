@@ -15,23 +15,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         crossorigin="anonymous">
 
-    <!-- CSS general -->
-    <link rel="stylesheet" href="../assets/css/styles.css">
-
-    <!-- CSS detalle -->
-    <link rel="stylesheet" href="../assets/css/detalle.css">
+    <!-- CSS compilado desde SASS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 
 <body>
 
     <!-- ================= HEADER ================= -->
-    <header>
+    <header class="main-header">
 
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark main-header">
 
             <div class="container">
 
-                <a class="navbar-brand fw-bold" href="#" onclick="irHome(); return false;">
+                <a class="navbar-brand main-header__brand" href="#" onclick="irHome(); return false;">
                     Aurora
                 </a>
 
@@ -44,20 +41,20 @@
 
                 <div class="collapse navbar-collapse" id="navbarDetalle">
 
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto main-header__nav">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="irHome(); return false;">Home</a>
+                            <a class="nav-link main-header__link" href="#" onclick="irHome(); return false;">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <span class="nav-link active" aria-current="page">
+                            <span class="nav-link active main-header__link" aria-current="page">
                                 Detalle
                             </span>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="irAcerca(); return false;">Acerca de</a>
+                            <a class="nav-link main-header__link" href="#" onclick="irAcerca(); return false;">Acerca de</a>
                         </li>
 
                     </ul>
@@ -70,23 +67,22 @@
 
     </header>
 
-
     <!-- ================= MAIN ================= -->
-    <main class="py-4">
+    <main class="place-detail py-4">
 
         <div class="container">
 
             <!-- ===== PRESENTACIÓN ===== -->
-            <section class="mb-4" aria-labelledby="titulo-ciudad">
+            <section class="place-detail__section mb-4" aria-labelledby="titulo-ciudad">
 
-                <div class="p-4 p-md-5 rounded-4 bg-light border caja-detalle">
+                <div class="place-detail__box p-4 p-md-5">
 
-                    <nav aria-label="breadcrumb" class="mb-3">
+                    <nav class="breadcrumb-nav mb-3" aria-label="breadcrumb">
 
                         <ol class="breadcrumb mb-0">
 
                             <li class="breadcrumb-item">
-                                <a href="#" onclick="irHome(); return false;">Home</a>
+                                <a class="breadcrumb-nav__link" href="#" onclick="irHome(); return false;">Home</a>
                             </li>
 
                             <li class="breadcrumb-item active" aria-current="page">
@@ -97,21 +93,21 @@
 
                     </nav>
 
-                    <h1 id="titulo-ciudad" class="display-6 fw-bold mb-2">
+                    <h1 id="titulo-ciudad" class="place-detail__title display-6 fw-bold mb-2">
                         Iquique
                     </h1>
 
-                    <p class="mb-3">
+                    <p class="place-detail__description mb-3">
                         Consulta las condiciones climáticas actuales y el pronóstico estimado
                         para los próximos días en la ciudad de Iquique.
                     </p>
 
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="place-detail__summary d-flex align-items-center gap-3">
 
-                        <span class="badge text-bg-warning fs-6">
-                            ☀️ Soleado
+                        <span class="badge text-bg-primary fs-6">
+                            🌤️ Despejado
                         </span>
-
+                        
                         <span class="fw-semibold fs-5">
                             23°C
                         </span>
@@ -122,17 +118,16 @@
 
             </section>
 
-
             <!-- ===== INFORMACIÓN CIUDAD ===== -->
-            <section class="mb-4" aria-labelledby="info-ciudad">
+            <section class="place-detail__section mb-4" aria-labelledby="info-ciudad">
 
-                <div class="p-4 rounded-4 bg-light border caja-detalle">
+                <div class="place-detail__box p-4">
 
-                    <h2 id="info-ciudad" class="h4 fw-bold mb-3">
+                    <h2 id="info-ciudad" class="place-detail__subtitle h4 fw-bold mb-3">
                         Sobre la ciudad
                     </h2>
 
-                    <p class="mb-3">
+                    <p class="place-detail__text mb-3">
                         Iquique es una ciudad costera del norte de Chile, famosa por sus playas,
                         su puerto histórico y el contraste entre el océano Pacífico y el desierto
                         de Atacama.
@@ -141,7 +136,7 @@
                     <div class="row g-3">
 
                         <article class="col-12 col-sm-6 col-lg-3">
-                            <div class="card h-100 shadow-sm tarjeta-info-ciudad">
+                            <div class="card place-detail__info-card h-100 shadow-sm">
                                 <div class="card-body">
                                     <h3 class="h6 text-muted mb-1">Región</h3>
                                     <p class="mb-0 fw-semibold">Tarapacá</p>
@@ -150,7 +145,7 @@
                         </article>
 
                         <article class="col-12 col-sm-6 col-lg-3">
-                            <div class="card h-100 shadow-sm tarjeta-info-ciudad">
+                            <div class="card place-detail__info-card h-100 shadow-sm">
                                 <div class="card-body">
                                     <h3 class="h6 text-muted mb-1">Altitud</h3>
                                     <p class="mb-0 fw-semibold">52 m</p>
@@ -159,7 +154,7 @@
                         </article>
 
                         <article class="col-12 col-sm-6 col-lg-3">
-                            <div class="card h-100 shadow-sm tarjeta-info-ciudad">
+                            <div class="card place-detail__info-card h-100 shadow-sm">
                                 <div class="card-body">
                                     <h3 class="h6 text-muted mb-1">Población</h3>
                                     <p class="mb-0 fw-semibold">~220 mil</p>
@@ -168,7 +163,7 @@
                         </article>
 
                         <article class="col-12 col-sm-6 col-lg-3">
-                            <div class="card h-100 shadow-sm tarjeta-info-ciudad">
+                            <div class="card place-detail__info-card h-100 shadow-sm">
                                 <div class="card-body">
                                     <h3 class="h6 text-muted mb-1">Clima</h3>
                                     <p class="mb-0 fw-semibold">Desértico costero</p>
@@ -182,22 +177,20 @@
 
             </section>
 
-
             <!-- ===== CLIMA ACTUAL ===== -->
-            <section class="mb-4" aria-labelledby="clima-actual">
+            <section class="place-detail__section mb-4" aria-labelledby="clima-actual">
 
-                <h2 id="clima-actual" class="h4 fw-bold mb-3">
+                <h2 id="clima-actual" class="place-detail__subtitle h4 fw-bold mb-3">
                     Clima actual
                 </h2>
 
                 <div class="row g-3">
 
-                    <!-- Imagen -->
                     <div class="col-12 col-lg-6">
 
-                        <article class="card h-100 shadow-sm">
+                        <article class="card place-detail__climate-card h-100 shadow-sm">
 
-                            <img src="../assets/img/iquique.webp" class="card-img-top img-detalle-ciudad"
+                            <img src="../assets/img/iquique.webp" class="card-img-top place-detail__image"
                                 alt="Vista de Iquique con costa y edificios">
 
                             <div class="card-body">
@@ -217,43 +210,42 @@
 
                     </div>
 
-                    <!-- Datos clima -->
                     <div class="col-12 col-lg-6">
 
                         <div class="row g-3">
 
                             <article class="col-12 col-sm-6">
-                                <div class="card h-100 shadow-sm tarjeta-metrica">
+                                <div class="card place-detail__metric-card h-100 shadow-sm">
                                     <div class="card-body">
                                         <h3 class="h6 text-muted mb-2">Temperatura</h3>
-                                        <p class="display-6 fw-bold mb-0">23°C</p>
+                                        <p class="place-detail__metric-value display-6 fw-bold mb-0">23°C</p>
                                     </div>
                                 </div>
                             </article>
 
                             <article class="col-12 col-sm-6">
-                                <div class="card h-100 shadow-sm tarjeta-metrica">
+                                <div class="card place-detail__metric-card h-100 shadow-sm">
                                     <div class="card-body">
                                         <h3 class="h6 text-muted mb-2">Humedad</h3>
-                                        <p class="display-6 fw-bold mb-0">52%</p>
+                                        <p class="place-detail__metric-value display-6 fw-bold mb-0">52%</p>
                                     </div>
                                 </div>
                             </article>
 
                             <article class="col-12 col-sm-6">
-                                <div class="card h-100 shadow-sm tarjeta-metrica">
+                                <div class="card place-detail__metric-card h-100 shadow-sm">
                                     <div class="card-body">
                                         <h3 class="h6 text-muted mb-2">Viento</h3>
-                                        <p class="display-6 fw-bold mb-0">17 km/h</p>
+                                        <p class="place-detail__metric-value display-6 fw-bold mb-0">17 km/h</p>
                                     </div>
                                 </div>
                             </article>
 
                             <article class="col-12 col-sm-6">
-                                <div class="card h-100 shadow-sm tarjeta-metrica">
+                                <div class="card place-detail__metric-card h-100 shadow-sm">
                                     <div class="card-body">
                                         <h3 class="h6 text-muted mb-2">Sensación térmica</h3>
-                                        <p class="display-6 fw-bold mb-0">24°C</p>
+                                        <p class="place-detail__metric-value display-6 fw-bold mb-0">24°C</p>
                                     </div>
                                 </div>
                             </article>
@@ -266,18 +258,17 @@
 
             </section>
 
-
             <!-- ===== PRONÓSTICO ===== -->
-            <section class="mb-4" aria-labelledby="pronostico-semanal">
+            <section class="place-detail__section mb-4" aria-labelledby="pronostico-semanal">
 
-                <h2 id="pronostico-semanal" class="h4 fw-bold mb-3">
+                <h2 id="pronostico-semanal" class="place-detail__subtitle h4 fw-bold mb-3">
                     Pronóstico semanal
                 </h2>
 
                 <div class="row g-3">
 
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Lunes</h3>
                                 <p class="fs-3 mb-2">☀️</p>
@@ -289,7 +280,7 @@
                     </article>
 
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Martes</h3>
                                 <p class="fs-3 mb-2">🌦️</p>
@@ -301,7 +292,7 @@
                     </article>
 
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Miércoles</h3>
                                 <p class="fs-3 mb-2">🌧️</p>
@@ -313,7 +304,7 @@
                     </article>
 
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Jueves</h3>
                                 <p class="fs-3 mb-2">🌬️</p>
@@ -325,11 +316,11 @@
                     </article>
 
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Viernes</h3>
                                 <p class="fs-3 mb-2">🌤️</p>
-                                <span class="badge badge-aurora-sky mb-2">Parcialmente nublado</span>
+                                <span class="place-detail__badge mb-2">Parcialmente nublado</span>
                                 <p class="mb-1"><strong>Máx:</strong> 23°C</p>
                                 <p class="mb-0"><strong>Mín:</strong> 18°C</p>
                             </div>
@@ -337,7 +328,7 @@
                     </article>
 
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Sábado</h3>
                                 <p class="fs-3 mb-2">☀️</p>
@@ -349,7 +340,7 @@
                     </article>
 
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Domingo</h3>
                                 <p class="fs-3 mb-2">☀️</p>
@@ -368,17 +359,16 @@
 
     </main>
 
-
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-dark text-white py-4">
+    <footer class="main-footer">
 
         <div class="container">
 
-            <p class="mb-1 fw-semibold">
+            <p class="main-footer__text mb-1 fw-semibold">
                 Aurora · Tu clima en Chile
             </p>
 
-            <p class="mb-0 small">
+            <p class="main-footer__text mb-0 small">
                 Consulta el clima actual y el pronóstico semanal de distintas ciudades de Chile.
             </p>
 
@@ -386,12 +376,8 @@
 
     </footer>
 
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
     <!-- JS propio -->
     <script src="../assets/js/main.js"></script>

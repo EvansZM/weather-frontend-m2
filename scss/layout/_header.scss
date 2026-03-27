@@ -1,0 +1,35 @@
+/* =========================================================
+   ARCHIVO: _header.scss
+   FUNCIÓN: Estilos del encabezado y navegación principal
+   ========================================================= */
+
+@use '../abstracts/variables' as *;
+
+/* ----- Bloque BEM del header principal ----- */
+.main-header {
+  background-color: $color-dark;
+  box-shadow: $shadow-sm;
+
+  /* ----- Marca o logo del navbar ----- */
+  &__brand {
+    letter-spacing: 0.3px;
+    font-weight: 700;
+    color: $color-white;
+  }
+
+  /* ----- Lista de navegación ----- */
+  &__nav {
+    gap: $space-sm;
+  }
+
+  /* ----- Links del menú ----- */
+  &__link {
+    font-weight: 500;
+    color: $color-white;
+  }
+
+  /* ----- Efecto hover para links ----- */
+  &__link:hover {
+    color: $color-primary;
+  }
+}

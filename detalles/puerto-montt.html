@@ -2,85 +2,78 @@
 <html lang="es">
 
 <head>
-
+    <!-- Codificación -->
     <meta charset="UTF-8">
 
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Título -->
     <title>Aurora · Clima en Puerto Montt</title>
 
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../assets/css/styles.css">
-
-    <link rel="stylesheet" href="../assets/css/detalle.css">
-
+    <!-- CSS compilado desde SASS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 
 <body>
 
-    <header>
-
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-
+    <!-- ===== HEADER ===== -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-dark main-header">
             <div class="container">
 
-                <a class="navbar-brand fw-bold" href="#" onclick="irHome(); return false;">
+                <a class="navbar-brand main-header__brand" href="#" onclick="irHome(); return false;">
                     Aurora
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDetalle"
                     aria-controls="navbarDetalle" aria-expanded="false" aria-label="Abrir menú">
-
                     <span class="navbar-toggler-icon"></span>
-
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarDetalle">
-
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto main-header__nav">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="irHome(); return false;">Home</a>
+                            <a class="nav-link main-header__link" href="#" onclick="irHome(); return false;">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <span class="nav-link active" aria-current="page">
+                            <span class="nav-link active main-header__link" aria-current="page">
                                 Detalle
                             </span>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="irAcerca(); return false;">Acerca de</a>
+                            <a class="nav-link main-header__link" href="#" onclick="irAcerca(); return false;">Acerca de</a>
                         </li>
 
                     </ul>
-
                 </div>
 
             </div>
-
         </nav>
-
     </header>
 
-
-    <main class="py-4">
+    <!-- ===== MAIN ===== -->
+    <main class="place-detail py-4">
 
         <div class="container">
 
+            <!-- ===== PRESENTACIÓN ===== -->
+            <section class="place-detail__section mb-4" aria-labelledby="titulo-ciudad">
 
-            <section class="mb-4" aria-labelledby="titulo-ciudad">
+                <div class="place-detail__box p-4 p-md-5">
 
-                <div class="p-4 p-md-5 rounded-4 bg-light border caja-detalle">
-
-                    <nav aria-label="breadcrumb" class="mb-3">
-
+                    <nav class="breadcrumb-nav mb-3" aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
 
                             <li class="breadcrumb-item">
-                                <a href="#" onclick="irHome(); return false;">Home</a>
+                                <a class="breadcrumb-nav__link" href="#" onclick="irHome(); return false;">Home</a>
                             </li>
 
                             <li class="breadcrumb-item active" aria-current="page">
@@ -88,19 +81,18 @@
                             </li>
 
                         </ol>
-
                     </nav>
 
-                    <h1 id="titulo-ciudad" class="display-6 fw-bold mb-2">
+                    <h1 id="titulo-ciudad" class="place-detail__title display-6 fw-bold mb-2">
                         Puerto Montt
                     </h1>
 
-                    <p class="mb-3">
+                    <p class="place-detail__description mb-3">
                         Consulta las condiciones climáticas actuales y el pronóstico estimado
                         para los próximos días en la ciudad de Puerto Montt.
                     </p>
 
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="place-detail__summary d-flex align-items-center gap-3">
 
                         <span class="badge text-bg-success fs-6">
                             🌧️ Lluvia
@@ -116,17 +108,16 @@
 
             </section>
 
+            <!-- ===== INFORMACIÓN CIUDAD ===== -->
+            <section class="place-detail__section mb-4" aria-labelledby="info-ciudad">
 
+                <div class="place-detail__box p-4">
 
-            <section class="mb-4" aria-labelledby="info-ciudad">
-
-                <div class="p-4 rounded-4 bg-light border caja-detalle">
-
-                    <h2 id="info-ciudad" class="h4 fw-bold mb-3">
+                    <h2 id="info-ciudad" class="place-detail__subtitle h4 fw-bold mb-3">
                         Sobre la ciudad
                     </h2>
 
-                    <p class="mb-3">
+                    <p class="place-detail__text mb-3">
                         Puerto Montt es una ciudad portuaria del sur de Chile, puerta de entrada
                         a la Patagonia y a la zona austral. Destaca por su borde costero,
                         cercanía a volcanes, fiordos y un clima fresco con abundantes lluvias.
@@ -135,7 +126,7 @@
                     <div class="row g-3">
 
                         <article class="col-12 col-sm-6 col-lg-3">
-                            <div class="card h-100 shadow-sm tarjeta-info-ciudad">
+                            <div class="card place-detail__info-card h-100 shadow-sm">
                                 <div class="card-body">
                                     <h3 class="h6 text-muted mb-1">Región</h3>
                                     <p class="mb-0 fw-semibold">Los Lagos</p>
@@ -144,7 +135,7 @@
                         </article>
 
                         <article class="col-12 col-sm-6 col-lg-3">
-                            <div class="card h-100 shadow-sm tarjeta-info-ciudad">
+                            <div class="card place-detail__info-card h-100 shadow-sm">
                                 <div class="card-body">
                                     <h3 class="h6 text-muted mb-1">Altitud</h3>
                                     <p class="mb-0 fw-semibold">14 m</p>
@@ -153,7 +144,7 @@
                         </article>
 
                         <article class="col-12 col-sm-6 col-lg-3">
-                            <div class="card h-100 shadow-sm tarjeta-info-ciudad">
+                            <div class="card place-detail__info-card h-100 shadow-sm">
                                 <div class="card-body">
                                     <h3 class="h6 text-muted mb-1">Población</h3>
                                     <p class="mb-0 fw-semibold">~250 mil</p>
@@ -162,7 +153,7 @@
                         </article>
 
                         <article class="col-12 col-sm-6 col-lg-3">
-                            <div class="card h-100 shadow-sm tarjeta-info-ciudad">
+                            <div class="card place-detail__info-card h-100 shadow-sm">
                                 <div class="card-body">
                                     <h3 class="h6 text-muted mb-1">Clima</h3>
                                     <p class="mb-0 fw-semibold">Templado oceánico lluvioso</p>
@@ -176,11 +167,10 @@
 
             </section>
 
+            <!-- ===== CLIMA ACTUAL ===== -->
+            <section class="place-detail__section mb-4" aria-labelledby="clima-actual">
 
-
-            <section class="mb-4" aria-labelledby="clima-actual">
-
-                <h2 id="clima-actual" class="h4 fw-bold mb-3">
+                <h2 id="clima-actual" class="place-detail__subtitle h4 fw-bold mb-3">
                     Clima actual
                 </h2>
 
@@ -188,9 +178,9 @@
 
                     <div class="col-12 col-lg-6">
 
-                        <article class="card h-100 shadow-sm">
+                        <article class="card place-detail__climate-card h-100 shadow-sm">
 
-                            <img src="../assets/img/puerto-montt.webp" class="card-img-top img-detalle-ciudad"
+                            <img src="../assets/img/puerto-montt.webp" class="card-img-top place-detail__image"
                                 alt="Vista costera de Puerto Montt con mar, ciudad y cielo nublado">
 
                             <div class="card-body">
@@ -210,44 +200,42 @@
 
                     </div>
 
-
-
                     <div class="col-12 col-lg-6">
 
                         <div class="row g-3">
 
                             <article class="col-12 col-sm-6">
-                                <div class="card h-100 shadow-sm tarjeta-metrica">
+                                <div class="card place-detail__metric-card h-100 shadow-sm">
                                     <div class="card-body">
                                         <h3 class="h6 text-muted mb-2">Temperatura</h3>
-                                        <p class="display-6 fw-bold mb-0">13°C</p>
+                                        <p class="place-detail__metric-value display-6 fw-bold mb-0">13°C</p>
                                     </div>
                                 </div>
                             </article>
 
                             <article class="col-12 col-sm-6">
-                                <div class="card h-100 shadow-sm tarjeta-metrica">
+                                <div class="card place-detail__metric-card h-100 shadow-sm">
                                     <div class="card-body">
                                         <h3 class="h6 text-muted mb-2">Humedad</h3>
-                                        <p class="display-6 fw-bold mb-0">90%</p>
+                                        <p class="place-detail__metric-value display-6 fw-bold mb-0">90%</p>
                                     </div>
                                 </div>
                             </article>
 
                             <article class="col-12 col-sm-6">
-                                <div class="card h-100 shadow-sm tarjeta-metrica">
+                                <div class="card place-detail__metric-card h-100 shadow-sm">
                                     <div class="card-body">
                                         <h3 class="h6 text-muted mb-2">Viento</h3>
-                                        <p class="display-6 fw-bold mb-0">20 km/h</p>
+                                        <p class="place-detail__metric-value display-6 fw-bold mb-0">20 km/h</p>
                                     </div>
                                 </div>
                             </article>
 
                             <article class="col-12 col-sm-6">
-                                <div class="card h-100 shadow-sm tarjeta-metrica">
+                                <div class="card place-detail__metric-card h-100 shadow-sm">
                                     <div class="card-body">
                                         <h3 class="h6 text-muted mb-2">Sensación térmica</h3>
-                                        <p class="display-6 fw-bold mb-0">11°C</p>
+                                        <p class="place-detail__metric-value display-6 fw-bold mb-0">11°C</p>
                                     </div>
                                 </div>
                             </article>
@@ -260,19 +248,17 @@
 
             </section>
 
+            <!-- ===== PRONÓSTICO ===== -->
+            <section class="place-detail__section mb-4" aria-labelledby="pronostico-semanal">
 
-
-            <section class="mb-4" aria-labelledby="pronostico-semanal">
-
-                <h2 id="pronostico-semanal" class="h4 fw-bold mb-3">
+                <h2 id="pronostico-semanal" class="place-detail__subtitle h4 fw-bold mb-3">
                     Pronóstico semanal
                 </h2>
 
                 <div class="row g-3">
 
-
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Lunes</h3>
                                 <p class="fs-3 mb-2">🌧️</p>
@@ -283,9 +269,8 @@
                         </div>
                     </article>
 
-
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Martes</h3>
                                 <p class="fs-3 mb-2">🌦️</p>
@@ -296,9 +281,8 @@
                         </div>
                     </article>
 
-
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Miércoles</h3>
                                 <p class="fs-3 mb-2">☁️</p>
@@ -309,9 +293,8 @@
                         </div>
                     </article>
 
-
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Jueves</h3>
                                 <p class="fs-3 mb-2">🌧️</p>
@@ -322,9 +305,8 @@
                         </div>
                     </article>
 
-
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Viernes</h3>
                                 <p class="fs-3 mb-2">🌬️</p>
@@ -335,9 +317,8 @@
                         </div>
                     </article>
 
-
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Sábado</h3>
                                 <p class="fs-3 mb-2">🌦️</p>
@@ -348,9 +329,8 @@
                         </div>
                     </article>
 
-
                     <article class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 shadow-sm tarjeta-pronostico">
+                        <div class="card place-detail__forecast-card h-100 shadow-sm">
                             <div class="card-body">
                                 <h3 class="h5 card-title">Domingo</h3>
                                 <p class="fs-3 mb-2">☁️</p>
@@ -369,16 +349,16 @@
 
     </main>
 
-
-    <footer class="bg-dark text-white py-4">
+    <!-- ===== FOOTER ===== -->
+    <footer class="main-footer">
 
         <div class="container">
 
-            <p class="mb-1 fw-semibold">
+            <p class="main-footer__text mb-1 fw-semibold">
                 Aurora · Tu clima en Chile
             </p>
 
-            <p class="mb-0 small">
+            <p class="main-footer__text mb-0 small">
                 Consulta el clima actual y el pronóstico semanal de distintas ciudades de Chile.
             </p>
 
@@ -386,11 +366,10 @@
 
     </footer>
 
-
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-
+    <!-- JS propio -->
     <script src="../assets/js/main.js"></script>
 
 </body>

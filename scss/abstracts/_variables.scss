@@ -1,0 +1,36 @@
+/* =========================================================
+   ARCHIVO: _variables.scss
+   FUNCIÓN: Guardar colores, fuentes, radios, sombras y espacios
+   ========================================================= */
+
+/* ----- Colores principales ----- */
+$color-bg-main: #f6f8fb;
+$color-dark: #0b1220;
+$color-white: #ffffff;
+$color-border-soft: #e8eef6;
+
+$color-primary: #2b8cff;
+$color-primary-hover: #1f7ae6;
+
+$color-text: #212529;
+$color-text-light: #6c757d;
+
+/* ----- Tipografía base ----- */
+$font-base: Arial, sans-serif;
+
+/* ----- Bordes redondeados ----- */
+$radius-sm: 0.5rem;
+$radius-md: 1rem;
+$radius-lg: 1.5rem;
+
+/* ----- Sombras ----- */
+$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 8px 22px rgba(15, 23, 42, 0.06);
+$shadow-lg: 0 12px 26px rgba(15, 23, 42, 0.10);
+
+/* ----- Espaciados ----- */
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;

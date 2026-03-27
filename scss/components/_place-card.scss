@@ -1,0 +1,57 @@
+/* =========================================================
+   ARCHIVO: _place-card.scss
+   FUNCIÓN: Estilos reutilizables para cards de ciudades
+   ========================================================= */
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ----- Bloque BEM para card de ciudad ----- */
+.place-card {
+  @include card-base;
+  height: 100%;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+  /* ----- Hover de la card ----- */
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-lg;
+  }
+
+  /* ----- Imagen superior de la card ----- */
+  &__image {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* ----- Cuerpo interno de la card ----- */
+  &__body {
+    padding: $space-md;
+  }
+
+  /* ----- Título de la card ----- */
+  &__title {
+    margin-bottom: $space-sm;
+    color: $color-text;
+  }
+
+  /* ----- Texto descriptivo de la card ----- */
+  &__text {
+    color: $color-text-light;
+  }
+
+  /* ----- Botón propio de la card ----- */
+  &__button {
+    background-color: $color-primary;
+    border: 1px solid $color-primary;
+    color: $color-white;
+  }
+
+  /* ----- Hover del botón ----- */
+  &__button:hover {
+    background-color: $color-primary-hover;
+    border-color: $color-primary-hover;
+  }
+}

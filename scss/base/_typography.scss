@@ -1,0 +1,29 @@
+/* =========================================================
+   ARCHIVO: _typography.scss
+   FUNCIÓN: Definir tipografía y estilos globales de texto
+   ========================================================= */
+
+@use '../abstracts/variables' as *;
+
+/* ----- Estilos globales del body ----- */
+body {
+  background-color: $color-bg-main;
+  font-family: $font-base;
+  color: $color-text;
+  line-height: 1.5;
+}
+
+/* ----- Títulos globales ----- */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  margin-bottom: $space-sm;
+}
+
+/* ----- Párrafos globales ----- */
+p {
+  margin-bottom: $space-sm;
+  color: $color-text-light;
+}

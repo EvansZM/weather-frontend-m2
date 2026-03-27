@@ -1,0 +1,37 @@
+/* =========================================================
+   ARCHIVO: _reset.scss
+   FUNCIÓN: Reiniciar estilos base del navegador
+   ========================================================= */
+
+/* ----- Reset general para todos los elementos ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----- El body no debe traer márgenes por defecto ----- */
+body {
+  margin: 0;
+}
+
+/* ----- Las imágenes no deben salirse del contenedor ----- */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ----- Quitamos estilos por defecto de listas ----- */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+/* ----- Quitamos subrayado y heredamos color en enlaces ----- */
+a {
+  text-decoration: none;
+  color: inherit;
+}

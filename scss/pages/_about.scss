@@ -1,0 +1,34 @@
+/* =========================================================
+   ARCHIVO: _about.scss
+   FUNCIÓN: Estilos exclusivos de la página acerca de
+   ========================================================= */
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ----- Bloque BEM de la página acerca ----- */
+.about-page {
+  /* ----- Caja principal ----- */
+  &__box {
+    @include panel-soft;
+    padding: $space-lg;
+  }
+
+  /* ----- Tarjetas de información ----- */
+  &__card {
+    border: 1px solid $color-border-soft;
+    border-radius: $radius-md;
+    background-color: $color-white;
+  }
+}
+
+/* ----- Breadcrumb reutilizable ----- */
+.breadcrumb-nav {
+  &__link {
+    color: $color-primary;
+  }
+
+  &__link:hover {
+    text-decoration: underline;
+  }
+}

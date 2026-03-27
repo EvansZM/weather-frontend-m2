@@ -1,0 +1,19 @@
+/* =========================================================
+   ARCHIVO: _footer.scss
+   FUNCIÓN: Estilos del pie de página
+   ========================================================= */
+
+@use '../abstracts/variables' as *;
+
+/* ----- Bloque BEM del footer ----- */
+.main-footer {
+  background-color: $color-dark;
+  color: $color-white;
+  padding: $space-lg 0;
+
+  /* ----- Texto interno del footer ----- */
+  &__text {
+    margin-bottom: 0;
+    color: $color-white;
+  }
+}

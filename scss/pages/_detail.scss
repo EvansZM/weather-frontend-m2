@@ -1,0 +1,87 @@
+/* =========================================================
+   ARCHIVO: _detail.scss
+   FUNCIÓN: Estilos exclusivos para todas las páginas de detalle
+   ========================================================= */
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ----- Bloque BEM de detalle de ciudad ----- */
+.place-detail {
+  /* ----- Caja principal del detalle ----- */
+  &__box {
+    @include panel-soft;
+    padding: $space-lg;
+  }
+
+  /* ----- Imagen principal del detalle ----- */
+  &__image {
+    height: 260px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: $radius-md;
+  }
+
+  /* ----- Tarjeta informativa reutilizable ----- */
+  &__info-card {
+    border: 1px solid $color-border-soft;
+    border-radius: $radius-md;
+    background-color: $color-white;
+  }
+
+  /* ----- Tarjeta de métrica ----- */
+  &__metric-card {
+    border: 1px solid $color-border-soft;
+    border-radius: $radius-md;
+    background-color: $color-white;
+  }
+
+  /* ----- Tarjeta de pronóstico ----- */
+  &__forecast-card {
+    border: 1px solid $color-border-soft;
+    border-radius: $radius-md;
+    background-color: $color-white;
+  }
+
+  /* ----- Tarjeta grande del clima actual ----- */
+  &__climate-card {
+    border: 1px solid $color-border-soft;
+    border-radius: $radius-md;
+    background-color: $color-white;
+  }
+
+  /* ----- Badge visual de la app ----- */
+  &__badge {
+    background-color: $color-primary;
+    color: $color-white;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-sm;
+    display: inline-block;
+  }
+
+  /* ----- Ajuste especial para números grandes ----- */
+  &__metric-value {
+    line-height: 1.1;
+  }
+}
+
+/* ----- Bloque BEM para breadcrumb ----- */
+.breadcrumb-nav {
+  &__link {
+    color: $color-primary;
+  }
+
+  &__link:hover {
+    text-decoration: underline;
+  }
+}
+
+/* ----- Responsive para móviles pequeños ----- */
+@media (max-width: 576px) {
+  .place-detail {
+    &__image {
+      height: 220px;
+    }
+  }
+}
