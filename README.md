@@ -86,6 +86,16 @@ Actualmente cuenta con:
 
 ---
 
+## Notas
+
+- Proyecto en desarrollo 🚧
+- Próximas mejoras:
+  - Mejorar UI/UX
+  - Agregar persistencia de datos
+  - Optimizar estilos con SASS
+
+---
+
 ## 🔗 Repositorio
 
 Repositorio público:
