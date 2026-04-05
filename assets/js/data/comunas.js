@@ -4,7 +4,7 @@ export const comunas = [
     slug: "antofagasta",
     nombre: "Antofagasta",
     region: "Antofagasta",
-    imagen: "../assets/img/antofagasta.webp",
+    imagen: "assets/img/antofagasta.webp",
     info: {
       descripcion:
         "Antofagasta es una ciudad costera del norte de Chile ubicada frente al océano Pacífico y rodeada por el desierto de Atacama. Es un importante centro minero, portuario y económico del país.",
@@ -37,7 +37,7 @@ export const comunas = [
     slug: "arica",
     nombre: "Arica",
     region: "Arica y Parinacota",
-    imagen: "../assets/img/arica.webp",
+    imagen: "assets/img/arica.webp",
     info: {
       descripcion:
         'Arica es una ciudad costera ubicada en el extremo norte de Chile, conocida como la "Ciudad de la eterna primavera" debido a su clima templado y estable durante todo el año.',
@@ -70,7 +70,7 @@ export const comunas = [
     slug: "concepcion",
     nombre: "Concepción",
     region: "Biobío",
-    imagen: "../assets/img/concepcion.webp",
+    imagen: "assets/img/concepcion.webp",
     info: {
       descripcion:
         "Concepción es una de las principales ciudades del sur de Chile y un importante centro universitario, cultural e industrial del país. Se encuentra cerca del océano Pacífico y posee un clima templado con abundantes precipitaciones durante el año.",
@@ -103,7 +103,7 @@ export const comunas = [
     slug: "iquique",
     nombre: "Iquique",
     region: "Tarapacá",
-    imagen: "../assets/img/iquique.webp",
+    imagen: "assets/img/iquique.webp",
     info: {
       descripcion:
         "Iquique es una ciudad costera del norte de Chile, famosa por sus playas, su puerto histórico y el contraste entre el océano Pacífico y el desierto de Atacama.",
@@ -136,7 +136,7 @@ export const comunas = [
     slug: "la-serena",
     nombre: "La Serena",
     region: "Coquimbo",
-    imagen: "../assets/img/la-serena.webp",
+    imagen: "assets/img/la-serena.webp",
     info: {
       descripcion:
         "La Serena es una ciudad costera del norte chico de Chile, reconocida por sus extensas playas, arquitectura tradicional y cielos despejados durante gran parte del año.",
@@ -169,7 +169,7 @@ export const comunas = [
     slug: "puerto-montt",
     nombre: "Puerto Montt",
     region: "Los Lagos",
-    imagen: "../assets/img/puerto-montt.webp",
+    imagen: "assets/img/puerto-montt.webp",
     info: {
       descripcion:
         "Puerto Montt es una ciudad portuaria del sur de Chile, puerta de entrada a la Patagonia y a la zona austral. Destaca por su borde costero, cercanía a volcanes, fiordos y un clima fresco con abundantes lluvias.",
@@ -202,7 +202,7 @@ export const comunas = [
     slug: "punta-arenas",
     nombre: "Punta Arenas",
     region: "Magallanes",
-    imagen: "../assets/img/punta-arenas.webp",
+    imagen: "assets/img/punta-arenas.webp",
     info: {
       descripcion:
         "Punta Arenas es una de las ciudades más australes de Chile y un importante centro urbano de la Patagonia. Se caracteriza por sus bajas temperaturas, fuertes vientos y condiciones climáticas cambiantes a lo largo del año.",
@@ -235,7 +235,7 @@ export const comunas = [
     slug: "santiago",
     nombre: "Santiago",
     region: "Región Metropolitana",
-    imagen: "../assets/img/santiago.webp",
+    imagen: "assets/img/santiago.webp",
     info: {
       descripcion:
         "Santiago es la capital de Chile y se ubica en el valle central del país, rodeada por la Cordillera de los Andes. Es el principal centro urbano, cultural y económico del país.",
@@ -268,7 +268,7 @@ export const comunas = [
     slug: "temuco",
     nombre: "Temuco",
     region: "La Araucanía",
-    imagen: "../assets/img/temuco.webp",
+    imagen: "assets/img/temuco.webp",
     info: {
       descripcion:
         "Temuco es una ciudad del sur de Chile reconocida por su entorno natural, su cercanía a paisajes lacustres y volcánicos, y su clima templado lluvioso, con inviernos húmedos y temperaturas moderadas durante gran parte del año.",
@@ -301,7 +301,7 @@ export const comunas = [
     slug: "valdivia",
     nombre: "Valdivia",
     region: "Los Ríos",
-    imagen: "../assets/img/valdivia.webp",
+    imagen: "assets/img/valdivia.webp",
     info: {
       descripcion:
         "Valdivia es una ciudad del sur de Chile famosa por sus ríos, humedales, vegetación abundante y clima templado lluvioso. Es una de las ciudades más húmedas del país y destaca por su entorno natural y vida fluvial.",
@@ -334,7 +334,7 @@ export const comunas = [
     slug: "valparaiso",
     nombre: "Valparaíso",
     region: "Valparaíso",
-    imagen: "../assets/img/valparaiso.webp",
+    imagen: "assets/img/valparaiso.webp",
     info: {
       descripcion:
         "Valparaíso es una ciudad costera reconocida por sus cerros, ascensores, vida cultural y su histórico puerto. Su paisaje urbano y marítimo la convierten en uno de los destinos más emblemáticos de Chile.",
@@ -367,7 +367,7 @@ export const comunas = [
     slug: "vina-del-mar",
     nombre: "Viña del Mar",
     region: "Valparaíso",
-    imagen: "../assets/img/vina-del-mar.webp",
+    imagen: "assets/img/vina-del-mar.webp",
     info: {
       descripcion:
         "Viña del Mar es una ciudad costera reconocida por sus playas, jardines, vida turística y su entorno urbano junto al mar. Es uno de los principales destinos del litoral central chileno.",
