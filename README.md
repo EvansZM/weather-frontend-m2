@@ -1,8 +1,8 @@
 # Aurora · Tu clima en Chile 🌦️
 
-Proyecto frontend (MVP) de una aplicación de clima desarrollado con HTML5 semántico, Bootstrap y JavaScript (jQuery), como parte del módulo M2.
+Aplicación frontend de clima desarrollada con HTML5, Bootstrap y JavaScript, como parte del módulo M2.
 
-La aplicación presenta un listado de ciudades de Chile con información climática estática y permite navegar a una vista de detalle con pronóstico semanal.
+Aurora permite visualizar información climática de distintas ciudades de Chile, incluyendo temperatura actual, estado del clima y pronóstico semanal, utilizando renderizado dinámico desde una fuente de datos centralizada.
 
 ---
 
@@ -10,96 +10,135 @@ La aplicación presenta un listado de ciudades de Chile con información climát
 
 * HTML5 semántico
 * Bootstrap 5 (CDN)
-* JavaScript
-* jQuery
+* JavaScript (ES6+)
 * SASS (SCSS)
 * Git / GitHub
 
 ---
 
+## 🧠 Arquitectura del proyecto
+
+El proyecto fue refactorizado desde una estructura estática a una arquitectura dinámica basada en:
+
+* 📦 Fuente de datos centralizada (`comunas.js`)
+* ⚙️ Render dinámico en Home (`home.js`)
+* 🔍 Render dinámico en Detalle (`detalle.js`)
+* 🔗 Navegación controlada (`main.js`)
+
+Esto permite mayor escalabilidad y reutilización de datos sin duplicación de código.
+
+---
+
 ## 🎨 Arquitectura de estilos
 
-El proyecto fue refactorizado desde CSS tradicional a una arquitectura basada en **SASS (SCSS)**, permitiendo una mejor organización, reutilización de estilos y escalabilidad.
-
-Se implementó la metodología **BEM (Block Element Modifier)** para estructurar las clases CSS de forma clara y mantenible.
+Se implementó SASS (SCSS) junto con metodología BEM para una mejor organización.
 
 ### Estructura SASS
 
+```
 assets/
 ├── scss/
-│   ├── abstracts/ (variables, mixins)
-│   ├── base/ (reset, tipografías)
-│   ├── layout/ (header, footer)
-│   ├── components/ (cards, botones)
-│   ├── pages/ (home, detalle, acerca)
+│   ├── abstracts/
+│   ├── base/
+│   ├── layout/
+│   ├── components/
+│   ├── pages/
 │   └── main.scss
+```
 
-El archivo `main.scss` compila todos los parciales en un único archivo CSS final.
+El archivo `main.scss` compila todos los estilos en `main.css`.
 
 ---
 
 ## 📁 Estructura del proyecto
 
-weather-frontend-m2/
+```
+Portafolio_Modulo_2/
 ├── index.html
+├── detalle.html
 ├── acerca.html
 ├── assets/
 │   ├── css/
 │   │   └── main.css
-│   ├── scss/
 │   ├── js/
+│   │   ├── data/
+│   │   │   └── comunas.js
+│   │   ├── detalle.js
+│   │   ├── home.js
 │   │   └── main.js
+│   ├── scss/
 │   └── img/
-├── detalles/
+├── backup/
 ├── README.md
+```
 
 ---
 
-## 🔄 Cambios recientes
+## 🔄 Funcionalidades principales
 
-* Migración de CSS tradicional a SASS (SCSS)
-* Eliminación de uso de `!important`
-* Implementación de variables y mixins reutilizables
-* Refactorización de templates HTML a metodología BEM
-* Unificación del sistema de estilos en `main.css`
+* 📍 Listado dinámico de ciudades
+* 🌡️ Visualización de temperatura actual
+* 📊 Cálculo de temperatura mínima, máxima y promedio
+* 📅 Pronóstico semanal dinámico
+* 🔗 Navegación entre vistas sin duplicación de HTML
+* 📱 Diseño responsive
+
+---
+
+## 🔄 Cambios recientes (Refactor)
+
+* Migración de datos estáticos a estructura dinámica
+* Eliminación de múltiples archivos de detalle
+* Creación de una única vista `detalle.html`
+* Implementación de render dinámico con JavaScript
+* Centralización de datos en `comunas.js`
+* Mejora de arquitectura SASS + BEM
 
 ---
 
 ## 🚧 Estado del proyecto
 
-El proyecto se encuentra en desarrollo.
+Proyecto finalizado a nivel académico.
 
-Actualmente cuenta con:
+Incluye:
 
-* Vista principal con múltiples ciudades
-* Vistas de detalle refactorizadas con nueva arquitectura
-* Sistema de estilos escalable basado en SASS
+* Home dinámico
+* Detalle dinámico
+* Página informativa (Acerca de)
+* Arquitectura escalable
 
 ---
 
 ## ▶️ Cómo ejecutar el proyecto
 
-1. Clonar el repositorio desde GitHub.
-2. Abrir el archivo `index.html` en un navegador web moderno.
+1. Clonar el repositorio:
 
-> Nota: Si se realizan cambios en SASS, es necesario compilar a CSS antes de visualizar los cambios.
+```
+git clone https://github.com/EvansZM/weather-frontend-m2.git
+```
+
+2. Abrir el proyecto:
+
+```
+index.html
+```
 
 ---
 
-## Notas
+## 💡 Posibles mejoras futuras
 
-- Proyecto en desarrollo 🚧
-- Próximas mejoras:
-  - Mejorar UI/UX
-  - Agregar persistencia de datos
-  - Optimizar estilos con SASS
+* Integración con API real de clima
+* Loader de carga
+* Manejo de errores (ciudad no encontrada)
+* Animaciones UI
+* Persistencia de datos
 
 ---
 
 ## 🔗 Repositorio
 
-Repositorio público:
+GitHub:
 https://github.com/EvansZM/weather-frontend-m2
 
-Github Page:
+GitHub Pages:
 https://evanszm.github.io/weather-frontend-m2/
