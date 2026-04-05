@@ -26,26 +26,31 @@
         <nav class="navbar navbar-expand-lg navbar-dark main-header">
             <div class="container">
 
-                <a class="navbar-brand main-header__brand" href="index.html">
+                <!-- Marca principal del sitio -->
+                <a class="navbar-brand main-header__brand" href="#" onclick="irHome(); return false;">
                     Aurora
                 </a>
 
+                <!-- Botón hamburguesa para pantallas pequeñas -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
                     aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú de navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Menú principal -->
                 <div class="collapse navbar-collapse" id="navbarMain">
                     <ul class="navbar-nav ms-auto main-header__nav">
 
+                        <!-- Enlace al home -->
                         <li class="nav-item">
-                            <a class="nav-link main-header__link" href="#" onclick="irHomeRaiz(); return false;">
+                            <a class="nav-link main-header__link" href="#" onclick="irHome(); return false;">
                                 Home
                             </a>
                         </li>
 
+                        <!-- Enlace a la página acerca de -->
                         <li class="nav-item">
-                            <a class="nav-link main-header__link" href="#" onclick="irAcercaRaiz(); return false;">
+                            <a class="nav-link main-header__link" href="#" onclick="irAcerca(); return false;">
                                 Acerca de
                             </a>
                         </li>
@@ -62,12 +67,13 @@
 
         <div class="container">
 
-            <!-- Hero -->
+            <!-- ===== HERO ===== -->
             <section class="home-page__hero-section mb-2">
                 <div class="home-page__hero text-center">
                     <h1 class="home-page__title display-6 fw-bold mb-2">
                         Aurora · Tu clima en Chile
                     </h1>
+
                     <p class="home-page__description mb-0">
                         Consulta el clima actual y revisa el detalle con información de humedad,
                         viento y pronóstico semanal.
@@ -75,10 +81,12 @@
                 </div>
             </section>
 
-            <!-- Información -->
+            <!-- ===== INFORMACIÓN ===== -->
             <section class="home-page__info-section mt-3 mb-4">
                 <div class="home-page__info-box">
-                    <h2 class="home-page__section-title h5 fw-bold mb-2">Información climática</h2>
+                    <h2 class="home-page__section-title h5 fw-bold mb-2">
+                        Información climática
+                    </h2>
 
                     <p class="home-page__info-text mb-3">
                         Los datos presentados en esta aplicación son de carácter referencial
@@ -95,221 +103,41 @@
                 </div>
             </section>
 
-            <!-- Listado de ciudades -->
+            <!-- ===== LISTADO DINÁMICO DE COMUNAS ===== -->
             <section class="home-page__places" aria-label="Listado de ciudades">
-                <div class="row g-3">
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/santiago.webp" class="card-img-top place-card__image" alt="Vista de Santiago">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Santiago</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">27°C</span>
-                                    <span class="badge text-bg-warning ms-1">Soleado</span>
-                                </p>
-                                <button onclick="irDetalle('santiago')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/valparaiso.webp" class="card-img-top place-card__image" alt="Cerros de Valparaíso">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Valparaíso</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">21°C</span>
-                                    <span class="badge text-bg-secondary ms-1">Nublado</span>
-                                </p>
-                                <button onclick="irDetalle('valparaiso')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/vina-del-mar.webp" class="card-img-top place-card__image" alt="Vista de Viña del Mar">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Viña del Mar</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">17°C</span>
-                                    <span class="badge text-bg-secondary ms-1">Nublado</span>
-                                </p>
-                                <button onclick="irDetalle('vina-del-mar')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/la-serena.webp" class="card-img-top place-card__image" alt="Vista de La Serena">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">La Serena</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">23°C</span>
-                                    <span class="badge text-bg-primary ms-1">Despejado</span>
-                                </p>
-                                <button onclick="irDetalle('la-serena')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/antofagasta.webp" class="card-img-top place-card__image" alt="Costa de Antofagasta">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Antofagasta</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">24°C</span>
-                                    <span class="badge text-bg-info ms-1">Brisa</span>
-                                </p>
-                                <button onclick="irDetalle('antofagasta')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/iquique.webp" class="card-img-top place-card__image" alt="Playa de Iquique">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Iquique</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">23°C</span>
-                                    <span class="badge text-bg-primary ms-1">Despejado</span>
-                                </p>
-                                <button onclick="irDetalle('iquique')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/concepcion.webp" class="card-img-top place-card__image" alt="Vista urbana de Concepción">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Concepción</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">18°C</span>
-                                    <span class="badge text-bg-secondary ms-1">Nublado</span>
-                                </p>
-                                <button onclick="irDetalle('concepcion')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/temuco.webp" class="card-img-top place-card__image" alt="Paisaje de Temuco">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Temuco</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">15°C</span>
-                                    <span class="badge text-bg-success ms-1">Llovizna</span>
-                                </p>
-                                <button onclick="irDetalle('temuco')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/puerto-montt.webp" class="card-img-top place-card__image" alt="Costanera de Puerto Montt">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Puerto Montt</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">13°C</span>
-                                    <span class="badge text-bg-success ms-1">Lluvia</span>
-                                </p>
-                                <button onclick="irDetalle('puerto-montt')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/punta-arenas.webp" class="card-img-top place-card__image" alt="Paisaje de Punta Arenas">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Punta Arenas</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">8°C</span>
-                                    <span class="badge text-bg-dark ms-1">Viento</span>
-                                </p>
-                                <button onclick="irDetalle('punta-arenas')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/arica.webp" class="card-img-top place-card__image" alt="Vista de Arica">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Arica</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">26°C</span>
-                                    <span class="badge text-bg-warning ms-1">Soleado</span>
-                                </p>
-                                <button onclick="irDetalle('arica')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 col-sm-6 col-lg-3">
-                        <div class="card place-card h-100">
-                            <img src="./assets/img/valdivia.webp" class="card-img-top place-card__image" alt="Vista de Valdivia">
-                            <div class="card-body place-card__body">
-                                <h2 class="h5 card-title place-card__title mb-1">Valdivia</h2>
-                                <p class="place-card__text mb-2">
-                                    <span class="fw-bold">12°C</span>
-                                    <span class="badge text-bg-success ms-1">Lluvia</span>
-                                </p>
-                                <button onclick="irDetalle('valdivia')" class="btn btn-primary btn-lg w-100 place-card__button">
-                                    Ver detalle
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
+                <!--
+                    Este contenedor será llenado dinámicamente desde home.js
+                    usando los datos importados desde comunas.js
+                -->
+                <div class="row g-3" id="contenedor-comunas"></div>
             </section>
+
         </div>
     </main>
 
     <!-- ===== FOOTER ===== -->
     <footer class="main-footer">
         <div class="container">
-            <p class="main-footer__text mb-1 fw-semibold">Aurora · Tu clima en Chile</p>
+            <p class="main-footer__text mb-1 fw-semibold">
+                Aurora · Tu clima en Chile
+            </p>
+
             <p class="main-footer__text mb-0 small">
                 Proyecto académico con HTML5 semántico, Bootstrap y JavaScript - Evanny Zapata.
             </p>
         </div>
     </footer>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 
+    <!-- Navegación general del proyecto -->
     <script src="./assets/js/main.js"></script>
+
+    <!-- Render dinámico del home -->
+    <script type="module" src="./assets/js/home.js"></script>
 </body>
 
 </html>
