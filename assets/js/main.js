@@ -1,29 +1,28 @@
-// Función general para navegar a una ruta
+// Función general para navegar a cualquier ruta del proyecto.
+// Recibe una cadena de texto con la URL o ruta del archivo al que queremos ir.
 function irA(ruta) {
+    // Cambia la ubicación actual del navegador por la ruta recibida.
     window.location.href = ruta;
 }
 
-// Volver al home desde páginas dentro de /detalles
+// Función para volver al home principal del proyecto.
+// Se usa cuando queremos regresar a index.html.
 function irHome() {
-    irA("../index.html");
-}
-
-// Volver al home desde la raíz
-function irHomeRaiz() {
+    // Navega al archivo index.html que está en la raíz del proyecto.
     irA("./index.html");
 }
 
-// Ir a detalle desde el home
-function irDetalle(ciudad) {
-    irA(`./detalles/${ciudad}.html`);
+// Función para ir al detalle dinámico de una comuna o ciudad.
+// Recibe el slug, por ejemplo: "santiago", "vina-del-mar", "valparaiso".
+function irDetalle(slug) {
+    // Navega a detalle.html y envía el slug por la URL usando query params.
+    // Ejemplo final: ./detalle.html?ciudad=santiago
+    irA(`./detalle.html?ciudad=${slug}`);
 }
 
-// Ir a acerca desde páginas dentro de /detalles
+// Función para ir a la página "Acerca de".
+// Queda pensada para trabajar con acerca.html en la raíz del proyecto.
 function irAcerca() {
+    // Navega al archivo acerca.html.
     irA("./acerca.html");
-}
-
-// Ir a acerca desde la raíz
-function irAcercaRaiz() {
-    irA("./detalles/acerca.html");
 }
