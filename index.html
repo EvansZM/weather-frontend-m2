@@ -106,12 +106,18 @@
             <!-- ===== LISTADO DINÁMICO DE COMUNAS ===== -->
             <section class="home-page__places" aria-label="Listado de ciudades">
                 <!--
+                    Este contenedor muestra mensajes de carga o error
+                    cuando se consulta la API del clima.
+                -->
+                <div id="estado-home" class="mb-3 text-center"></div>
+
+                <!--
                     Este contenedor será llenado dinámicamente desde home.js
-                    usando los datos importados desde comunas.js
+                    usando los datos importados desde lugares.js
+                    y el clima obtenido desde la API.
                 -->
                 <div class="row g-3" id="contenedor-comunas"></div>
             </section>
-
         </div>
     </main>
 

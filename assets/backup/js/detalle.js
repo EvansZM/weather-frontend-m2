@@ -1,10 +1,6 @@
-// Importamos los datos base de los lugares.
-// Aquí vive la información local como nombre, imagen, región y descripción.
-import { lugares } from "./data/lugares.js";
-
-// Importamos las funciones que consumen la API de OpenWeather.
-// Una trae el clima actual y la otra el pronóstico extendido.
-import { obtenerClimaActual, obtenerPronostico } from "./services/apiClient.js";
+// Importamos el arreglo de comunas desde el archivo de datos.
+// Aquí vive toda la información que antes estaba repartida en varios HTML.
+import { comunas } from "./data/comunas.js";
 
 // ===============================
 // OBTENER ELEMENTOS DEL DOM
@@ -57,32 +53,28 @@ function obtenerSlugDesdeURL() {
     return params.get("ciudad");
 }
 
-// Esta función busca un lugar dentro del arreglo usando su slug.
-function obtenerLugarPorSlug(slug) {
+// Esta función busca una comuna dentro del arreglo usando su slug.
+function obtenerComunaPorSlug(slug) {
     // find recorre el arreglo y retorna la primera coincidencia.
-    return lugares.find((lugar) => lugar.slug === slug);
+    return comunas.find((comuna) => comuna.slug === slug);
 }
 
 // Esta función devuelve la clase visual del badge
 // según el estado del clima que reciba.
-function obtenerClaseBadge(estado = "") {
+function obtenerClaseBadge(estado) {
     // Normalizamos el texto a minúsculas para comparar mejor.
     const estadoNormalizado = estado.toLowerCase();
 
     // Estados soleados o despejados.
     if (
         estadoNormalizado.includes("soleado") ||
-        estadoNormalizado.includes("despejado") ||
-        estadoNormalizado.includes("clear")
+        estadoNormalizado.includes("despejado")
     ) {
         return "text-bg-warning";
     }
 
     // Estados nublados.
-    if (
-        estadoNormalizado.includes("nublado") ||
-        estadoNormalizado.includes("cloud")
-    ) {
+    if (estadoNormalizado.includes("nublado")) {
         return "text-bg-secondary";
     }
 
@@ -90,9 +82,7 @@ function obtenerClaseBadge(estado = "") {
     if (
         estadoNormalizado.includes("lluvia") ||
         estadoNormalizado.includes("llovizna") ||
-        estadoNormalizado.includes("chubascos") ||
-        estadoNormalizado.includes("rain") ||
-        estadoNormalizado.includes("drizzle")
+        estadoNormalizado.includes("chubascos")
     ) {
         return "text-bg-success";
     }
@@ -100,8 +90,7 @@ function obtenerClaseBadge(estado = "") {
     // Estados de viento o brisa.
     if (
         estadoNormalizado.includes("viento") ||
-        estadoNormalizado.includes("brisa") ||
-        estadoNormalizado.includes("wind")
+        estadoNormalizado.includes("brisa")
     ) {
         return "text-bg-info";
     }
@@ -110,147 +99,10 @@ function obtenerClaseBadge(estado = "") {
     return "text-bg-primary";
 }
 
-// Esta función traduce algunos estados comunes del inglés al español.
-// Sirve porque la API a veces devuelve descripciones que conviene normalizar.
-function traducirEstadoClima(estado = "") {
-    // Convertimos el texto a minúsculas para facilitar la comparación.
-    const texto = estado.toLowerCase();
-
-    // Mapeamos varios estados comunes.
-    if (texto.includes("clear")) return "Despejado";
-    if (texto.includes("cloud")) return "Nublado";
-    if (texto.includes("rain")) return "Lluvia";
-    if (texto.includes("drizzle")) return "Llovizna";
-    if (texto.includes("thunderstorm")) return "Tormenta";
-    if (texto.includes("snow")) return "Nieve";
-    if (texto.includes("mist") || texto.includes("fog") || texto.includes("haze")) return "Neblina";
-    if (texto.includes("wind")) return "Viento";
-
-    // Si no coincide con nada específico,
-    // devolvemos el texto con la primera letra en mayúscula.
-    return estado.charAt(0).toUpperCase() + estado.slice(1);
-}
-
-// Esta función capitaliza la primera letra de un texto.
-// La usamos para presentar descripciones más limpias.
-function capitalizarTexto(texto = "") {
-    // Si no existe texto, retornamos cadena vacía.
-    if (!texto) {
-        return "";
-    }
-
-    // Retornamos el texto con la inicial en mayúscula.
-    return texto.charAt(0).toUpperCase() + texto.slice(1);
-}
-
-// Esta función obtiene el nombre del día en español
-// a partir de una fecha en formato YYYY-MM-DD.
-function obtenerNombreDia(fechaTexto) {
-    // Creamos un objeto Date con la fecha.
-    const fecha = new Date(`${fechaTexto}T12:00:00`);
-
-    // Retornamos el nombre del día usando formato local en español.
-    return fecha.toLocaleDateString("es-CL", { weekday: "long" });
-}
-
-// Esta función devuelve un ícono simple según el estado del clima.
-// Lo usamos en el pronóstico semanal.
-function obtenerIconoClima(estado = "") {
-    // Normalizamos el texto para comparar.
-    const texto = estado.toLowerCase();
-
-    // Retornamos un ícono según el tipo de clima.
-    if (texto.includes("despejado") || texto.includes("clear")) return "☀️";
-    if (texto.includes("nublado") || texto.includes("cloud")) return "☁️";
-    if (texto.includes("lluvia") || texto.includes("rain")) return "🌧️";
-    if (texto.includes("llovizna") || texto.includes("drizzle")) return "🌦️";
-    if (texto.includes("viento") || texto.includes("wind")) return "💨";
-    if (texto.includes("tormenta")) return "⛈️";
-    if (texto.includes("nieve")) return "❄️";
-    if (texto.includes("neblina")) return "🌫️";
-
-    // Ícono por defecto si no hay coincidencia.
-    return "🌤️";
-}
-
-// Esta función procesa el pronóstico de OpenWeather.
-// La API devuelve datos cada 3 horas, así que aquí los agrupamos por día
-// para obtener un resumen semanal más limpio.
-function procesarPronosticoSemanal(dataPronostico) {
-    // Si no existe la lista o viene vacía, devolvemos un arreglo vacío.
-    if (!dataPronostico?.list || dataPronostico.list.length === 0) {
-        return [];
-    }
-
-    // Objeto donde agruparemos los registros por fecha.
-    const diasAgrupados = {};
-
-    // Recorremos cada bloque horario que entrega la API.
-    dataPronostico.list.forEach((item) => {
-        // Obtenemos la parte de la fecha sin la hora.
-        const fecha = item.dt_txt.split(" ")[0];
-
-        // Si la fecha todavía no existe en el objeto, la inicializamos.
-        if (!diasAgrupados[fecha]) {
-            diasAgrupados[fecha] = [];
-        }
-
-        // Guardamos el bloque dentro de su fecha correspondiente.
-        diasAgrupados[fecha].push(item);
-    });
-
-    // Convertimos el objeto en un arreglo de días resumidos.
-    const resumenSemanal = Object.entries(diasAgrupados)
-        .slice(0, 5)
-        .map(([fecha, registros]) => {
-            // Calculamos máximas del día.
-            const maximas = registros.map((registro) => registro.main.temp_max);
-
-            // Calculamos mínimas del día.
-            const minimas = registros.map((registro) => registro.main.temp_min);
-
-            // Obtenemos una muestra representativa del estado del día.
-            // Aquí usamos el registro del medio para aproximar el clima predominante.
-            const registroCentral = registros[Math.floor(registros.length / 2)];
-
-            // Extraemos la descripción del clima.
-            const estadoOriginal = registroCentral.weather?.[0]?.description || "No disponible";
-
-            // Traducimos o normalizamos el estado.
-            const estado = traducirEstadoClima(estadoOriginal);
-
-            // Retornamos el objeto diario procesado.
-            return {
-                fecha,
-                dia: capitalizarTexto(obtenerNombreDia(fecha)),
-                estado,
-                icono: obtenerIconoClima(estado),
-                max: Math.round(Math.max(...maximas)),
-                min: Math.round(Math.min(...minimas)),
-            };
-        });
-
-    // Retornamos el pronóstico ya resumido por día.
-    return resumenSemanal;
-}
-
 // Esta función calcula estadísticas semanales a partir del pronóstico.
 // Aquí cumplimos una parte importante de la rúbrica porque
 // las estadísticas se calculan dinámicamente con JS.
 function calcularEstadisticas(pronosticoSemanal) {
-    // Si no hay pronóstico, devolvemos valores seguros.
-    if (!pronosticoSemanal || pronosticoSemanal.length === 0) {
-        return {
-            minimaSemana: "--",
-            maximaSemana: "--",
-            promedioSemana: "--",
-            conteoEstados: {},
-            estadoPredominante: "No disponible",
-            resumen: "No hay datos suficientes para calcular estadísticas.",
-            alertas: [],
-        };
-    }
-
     // Inicializamos la temperatura máxima con el primer día.
     let maximaSemana = pronosticoSemanal[0].max;
 
@@ -278,6 +130,7 @@ function calcularEstadisticas(pronosticoSemanal) {
         }
 
         // Sumamos la media del día usando min y max.
+        // Esto nos da un promedio semanal más equilibrado.
         sumaTemperaturas += (dia.max + dia.min) / 2;
 
         // Si el estado todavía no existe en el objeto,
@@ -314,9 +167,6 @@ function calcularEstadisticas(pronosticoSemanal) {
         conteoEstados
     );
 
-    // Generamos alertas simples según las reglas pedidas.
-    const alertas = generarAlertas(pronosticoSemanal, promedioSemana, conteoEstados);
-
     // Devolvemos todo agrupado en un objeto.
     return {
         minimaSemana,
@@ -325,7 +175,6 @@ function calcularEstadisticas(pronosticoSemanal) {
         conteoEstados,
         estadoPredominante,
         resumen,
-        alertas,
     };
 }
 
@@ -336,8 +185,8 @@ function generarResumenSemanal(promedioSemana, estadoPredominante, conteoEstados
     const estado = estadoPredominante.toLowerCase();
 
     // Si predominan estados soleados o despejados.
-    if (estado.includes("despejado") || estado.includes("soleado")) {
-        return "Semana mayormente despejada, con temperaturas agradables y buenas condiciones para actividades al aire libre.";
+    if (estado.includes("soleado") || estado.includes("despejado")) {
+        return "Semana mayormente soleada, con temperaturas agradables y buenas condiciones para actividades al aire libre.";
     }
 
     // Si predominan lluvias o similares.
@@ -348,10 +197,10 @@ function generarResumenSemanal(promedioSemana, estadoPredominante, conteoEstados
     ) {
         // Si además el promedio es bajo, hacemos el mensaje más específico.
         if (promedioSemana <= 12) {
-            return "Semana fría y húmeda, con presencia frecuente de precipitaciones.";
+            return "Semana fría y húmeda, con presencia frecuente de lluvias.";
         }
 
-        return "Semana inestable, con varios días de lluvia o llovizna.";
+        return "Semana inestable, con varios días de precipitaciones.";
     }
 
     // Si predominan nubes.
@@ -361,47 +210,11 @@ function generarResumenSemanal(promedioSemana, estadoPredominante, conteoEstados
 
     // Si predominan viento o brisa.
     if (estado.includes("viento") || estado.includes("brisa")) {
-        return "Semana marcada por viento o brisas, con variaciones suaves de temperatura.";
+        return "Semana marcada por vientos o brisas, con variaciones suaves de temperatura.";
     }
 
     // Mensaje por defecto si no cae en ningún caso.
     return "Semana con condiciones variables y cambios en el comportamiento del clima.";
-}
-
-// Esta función genera alertas simples basadas en reglas.
-// Así cumplimos el requisito de alertas del módulo.
-function generarAlertas(pronosticoSemanal, promedioSemana, conteoEstados) {
-    // Arreglo donde almacenaremos las alertas activas.
-    const alertas = [];
-
-    // Contamos días lluviosos.
-    const diasLluvia =
-        (conteoEstados["Lluvia"] || 0) +
-        (conteoEstados["Llovizna"] || 0);
-
-    // Regla 1: promedio alto.
-    if (typeof promedioSemana === "number" && promedioSemana >= 28) {
-        alertas.push("🔥 Alerta de calor: la temperatura promedio semanal es elevada.");
-    }
-
-    // Regla 2: varios días de lluvia.
-    if (diasLluvia >= 2) {
-        alertas.push("🌧️ Semana lluviosa: se esperan varios días con precipitaciones.");
-    }
-
-    // Regla 3: mucho viento.
-    const diasViento = conteoEstados["Viento"] || 0;
-    if (diasViento >= 2) {
-        alertas.push("💨 Atención: habrá varios días con presencia de viento.");
-    }
-
-    // Si no hay alertas, devolvemos una preventiva neutra.
-    if (alertas.length === 0) {
-        alertas.push("✅ Sin alertas relevantes: se esperan condiciones relativamente estables.");
-    }
-
-    // Retornamos el arreglo final.
-    return alertas;
 }
 
 // ===============================
@@ -409,43 +222,33 @@ function generarAlertas(pronosticoSemanal, promedioSemana, conteoEstados) {
 // ===============================
 
 // Esta función renderiza la cabecera principal del detalle.
-function renderizarCabecera(lugar, climaActualData) {
-    // Obtenemos la descripción actual del clima.
-    const estadoActual = traducirEstadoClima(
-        climaActualData?.weather?.[0]?.description || "No disponible"
-    );
-
-    // Obtenemos la temperatura actual.
-    const temperatura = climaActualData?.main?.temp !== undefined
-        ? Math.round(climaActualData.main.temp)
-        : "--";
-
+function renderizarCabecera(comuna) {
     // Actualizamos el breadcrumb.
-    breadcrumbCiudad.textContent = lugar.nombre;
+    breadcrumbCiudad.textContent = comuna.nombre;
 
     // Actualizamos el título principal.
-    nombreCiudad.textContent = lugar.nombre;
+    nombreCiudad.textContent = comuna.nombre;
 
     // Actualizamos la descripción breve.
-    descripcionCiudad.textContent = `Consulta las condiciones climáticas actuales y el pronóstico estimado para los próximos días en la ciudad de ${lugar.nombre}.`;
+    descripcionCiudad.textContent = `Consulta las condiciones climáticas actuales y el pronóstico estimado para los próximos días en la ciudad de ${comuna.nombre}.`;
 
-    // Actualizamos el texto del badge.
-    estadoClima.textContent = estadoActual;
+    // Actualizamos el texto del badge con icono + estado.
+    estadoClima.textContent = `${comuna.climaActual.icono} ${comuna.climaActual.estado}`;
 
     // Reemplazamos la clase anterior del badge por la nueva según el clima.
-    estadoClima.className = `badge ${obtenerClaseBadge(estadoActual)} fs-6`;
+    estadoClima.className = `badge ${obtenerClaseBadge(comuna.climaActual.estado)} fs-6`;
 
     // Actualizamos la temperatura actual.
-    temperaturaActual.textContent = `${temperatura}°C`;
+    temperaturaActual.textContent = `${comuna.climaActual.temperatura}°C`;
 
     // Actualizamos el título del documento en la pestaña.
-    document.title = `Aurora · Clima en ${lugar.nombre}`;
+    document.title = `Aurora · Clima en ${comuna.nombre}`;
 }
 
 // Esta función renderiza la sección "Sobre la ciudad".
-function renderizarInfoCiudad(lugar) {
+function renderizarInfoCiudad(comuna) {
     // Escribimos el texto principal de la ciudad.
-    infoTexto.textContent = lugar.info.descripcion;
+    infoTexto.textContent = comuna.info.descripcion;
 
     // Creamos las 4 cards de información rápida.
     infoCards.innerHTML = `
@@ -453,7 +256,7 @@ function renderizarInfoCiudad(lugar) {
             <div class="card place-detail__info-card h-100 shadow-sm">
                 <div class="card-body">
                     <h3 class="h6 text-muted mb-1">Región</h3>
-                    <p class="mb-0 fw-semibold">${lugar.region}</p>
+                    <p class="mb-0 fw-semibold">${comuna.region}</p>
                 </div>
             </div>
         </article>
@@ -462,7 +265,7 @@ function renderizarInfoCiudad(lugar) {
             <div class="card place-detail__info-card h-100 shadow-sm">
                 <div class="card-body">
                     <h3 class="h6 text-muted mb-1">Altitud</h3>
-                    <p class="mb-0 fw-semibold">${lugar.info.altitud}</p>
+                    <p class="mb-0 fw-semibold">${comuna.info.altitud}</p>
                 </div>
             </div>
         </article>
@@ -471,7 +274,7 @@ function renderizarInfoCiudad(lugar) {
             <div class="card place-detail__info-card h-100 shadow-sm">
                 <div class="card-body">
                     <h3 class="h6 text-muted mb-1">Población</h3>
-                    <p class="mb-0 fw-semibold">${lugar.info.poblacion}</p>
+                    <p class="mb-0 fw-semibold">${comuna.info.poblacion}</p>
                 </div>
             </div>
         </article>
@@ -480,7 +283,7 @@ function renderizarInfoCiudad(lugar) {
             <div class="card place-detail__info-card h-100 shadow-sm">
                 <div class="card-body">
                     <h3 class="h6 text-muted mb-1">Clima</h3>
-                    <p class="mb-0 fw-semibold">${lugar.info.clima}</p>
+                    <p class="mb-0 fw-semibold">${comuna.info.clima}</p>
                 </div>
             </div>
         </article>
@@ -488,37 +291,15 @@ function renderizarInfoCiudad(lugar) {
 }
 
 // Esta función renderiza la parte de clima actual.
-function renderizarClimaActual(lugar, climaActualData, estadisticas) {
-    // Obtenemos valores actuales desde la API.
-    const temperatura = climaActualData?.main?.temp !== undefined
-        ? Math.round(climaActualData.main.temp)
-        : "--";
-
-    const humedad = climaActualData?.main?.humidity ?? "--";
-    const viento = climaActualData?.wind?.speed !== undefined
-        ? Math.round(climaActualData.wind.speed * 3.6)
-        : "--";
-    const sensacion = climaActualData?.main?.feels_like !== undefined
-        ? Math.round(climaActualData.main.feels_like)
-        : "--";
-
-    const descripcion = capitalizarTexto(
-        climaActualData?.weather?.[0]?.description || "Condiciones no disponibles."
-    );
-
+function renderizarClimaActual(comuna, estadisticas) {
     // Asignamos la imagen de la ciudad.
-    imagenCiudad.src = `./${lugar.imagen}`;
+    imagenCiudad.src = `./${comuna.imagen}`;
 
     // Agregamos un texto alternativo descriptivo.
-    imagenCiudad.alt = `Vista de ${lugar.nombre}`;
+    imagenCiudad.alt = `Vista de ${comuna.nombre}`;
 
     // Escribimos la descripción de las condiciones actuales.
-    descripcionClima.textContent = descripcion;
-
-    // Generamos el bloque HTML de alertas.
-    const alertasHTML = estadisticas.alertas
-        .map((alerta) => `<li>${alerta}</li>`)
-        .join("");
+    descripcionClima.textContent = comuna.climaActual.descripcion;
 
     // Creamos las métricas del clima actual + estadísticas semanales.
     metricasClima.innerHTML = `
@@ -527,7 +308,7 @@ function renderizarClimaActual(lugar, climaActualData, estadisticas) {
                 <div class="card-body">
                     <h3 class="h6 text-muted mb-2">Temperatura</h3>
                     <p class="place-detail__metric-value display-6 fw-bold mb-0">
-                        ${temperatura}°C
+                        ${comuna.climaActual.temperatura}°C
                     </p>
                 </div>
             </div>
@@ -538,7 +319,7 @@ function renderizarClimaActual(lugar, climaActualData, estadisticas) {
                 <div class="card-body">
                     <h3 class="h6 text-muted mb-2">Humedad</h3>
                     <p class="place-detail__metric-value display-6 fw-bold mb-0">
-                        ${humedad}%
+                        ${comuna.climaActual.humedad}%
                     </p>
                 </div>
             </div>
@@ -549,7 +330,7 @@ function renderizarClimaActual(lugar, climaActualData, estadisticas) {
                 <div class="card-body">
                     <h3 class="h6 text-muted mb-2">Viento</h3>
                     <p class="place-detail__metric-value display-6 fw-bold mb-0">
-                        ${viento} km/h
+                        ${comuna.climaActual.viento} km/h
                     </p>
                 </div>
             </div>
@@ -560,7 +341,7 @@ function renderizarClimaActual(lugar, climaActualData, estadisticas) {
                 <div class="card-body">
                     <h3 class="h6 text-muted mb-2">Sensación térmica</h3>
                     <p class="place-detail__metric-value display-6 fw-bold mb-0">
-                        ${sensacion}°C
+                        ${comuna.climaActual.sensacion}°C
                     </p>
                 </div>
             </div>
@@ -595,12 +376,7 @@ function renderizarClimaActual(lugar, climaActualData, estadisticas) {
                     <p class="place-detail__metric-value display-6 fw-bold mb-2">
                         ${estadisticas.promedioSemana}°C
                     </p>
-                    <p class="mb-3">${estadisticas.resumen}</p>
-
-                    <h3 class="h6 text-muted mb-2">Alertas de clima</h3>
-                    <ul class="mb-0">
-                        ${alertasHTML}
-                    </ul>
+                    <p class="mb-0">${estadisticas.resumen}</p>
                 </div>
             </div>
         </article>
@@ -608,29 +384,19 @@ function renderizarClimaActual(lugar, climaActualData, estadisticas) {
 }
 
 // Esta función renderiza las cards del pronóstico semanal.
-function renderizarPronostico(pronosticoSemanal, estadisticas) {
-    // Si no hay datos, mostramos una card simple.
-    if (!pronosticoSemanal || pronosticoSemanal.length === 0) {
-        pronostico.innerHTML = `
-            <article class="col-12">
-                <div class="card place-detail__forecast-card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h3 class="h5 card-title mb-2">Pronóstico no disponible</h3>
-                        <p class="mb-0">
-                            No fue posible cargar el pronóstico semanal para esta ciudad.
-                        </p>
-                    </div>
-                </div>
-            </article>
-        `;
-        return;
-    }
-
+function renderizarPronostico(comuna, estadisticas) {
     // Recorremos el arreglo del pronóstico y generamos una card por cada día.
-    const tarjetasPronostico = pronosticoSemanal
+    const tarjetasPronostico = comuna.pronosticoSemanal
         .map((dia) => {
             // Obtenemos la clase del badge según el estado del día.
             const claseBadge = obtenerClaseBadge(dia.estado);
+
+            // Si el estado es parcialmente nublado,
+            // mantenemos la clase especial que ya usabas.
+            const badgeHTML =
+                dia.estado.toLowerCase().includes("parcialmente nublado")
+                    ? `<span class="place-detail__badge mb-2">${dia.estado}</span>`
+                    : `<span class="badge ${claseBadge} mb-2">${dia.estado}</span>`;
 
             // Retornamos el HTML de la card del día.
             return `
@@ -639,7 +405,7 @@ function renderizarPronostico(pronosticoSemanal, estadisticas) {
                         <div class="card-body">
                             <h3 class="h5 card-title">${dia.dia}</h3>
                             <p class="fs-3 mb-2">${dia.icono}</p>
-                            <span class="badge ${claseBadge} mb-2">${dia.estado}</span>
+                            ${badgeHTML}
                             <p class="mb-1"><strong>Máx:</strong> ${dia.max}°C</p>
                             <p class="mb-0"><strong>Mín:</strong> ${dia.min}°C</p>
                         </div>
@@ -679,16 +445,15 @@ function renderizarPronostico(pronosticoSemanal, estadisticas) {
     `;
 }
 
-// Esta función muestra un mensaje simple si la ciudad no existe
-// o si hubo un error al cargar el detalle.
-function renderizarError(mensaje = "No pudimos cargar el detalle solicitado.") {
+// Esta función muestra un mensaje simple si la ciudad no existe.
+function renderizarError() {
     // Reemplazamos el contenido principal por un mensaje amigable.
     document.querySelector("main").innerHTML = `
         <div class="container py-5">
             <div class="place-detail__box p-4 text-center">
-                <h1 class="place-detail__title display-6 fw-bold mb-3">Detalle no disponible</h1>
+                <h1 class="place-detail__title display-6 fw-bold mb-3">Ciudad no encontrada</h1>
                 <p class="place-detail__description mb-4">
-                    ${mensaje}
+                    No pudimos cargar el detalle solicitado. Vuelve al inicio y selecciona una ciudad válida.
                 </p>
                 <button class="btn btn-primary" onclick="irHome()">Volver al home</button>
             </div>
@@ -701,50 +466,27 @@ function renderizarError(mensaje = "No pudimos cargar el detalle solicitado.") {
 // ===============================
 
 // Esta función ejecuta toda la lógica del detalle.
-async function inicializarDetalle() {
-    try {
-        // Leemos el slug desde la URL.
-        const slug = obtenerSlugDesdeURL();
+function inicializarDetalle() {
+    // Leemos el slug desde la URL.
+    const slug = obtenerSlugDesdeURL();
 
-        // Buscamos el lugar correspondiente.
-        const lugar = obtenerLugarPorSlug(slug);
+    // Buscamos la comuna correspondiente.
+    const comuna = obtenerComunaPorSlug(slug);
 
-        // Si no existe, mostramos error y detenemos la ejecución.
-        if (!lugar) {
-            renderizarError("No encontramos la ciudad solicitada. Vuelve al inicio y selecciona una opción válida.");
-            return;
-        }
-
-        // Mostramos un estado de carga básico en algunos elementos clave.
-        nombreCiudad.textContent = "Cargando...";
-        descripcionCiudad.textContent = "Obteniendo información del clima...";
-        temperaturaActual.textContent = "--°C";
-        estadoClima.textContent = "Cargando";
-
-        // Consultamos en paralelo clima actual y pronóstico.
-        const [climaActualData, pronosticoData] = await Promise.all([
-            obtenerClimaActual(lugar.lat, lugar.lon),
-            obtenerPronostico(lugar.lat, lugar.lon),
-        ]);
-
-        // Procesamos el pronóstico para resumirlo por día.
-        const pronosticoSemanal = procesarPronosticoSemanal(pronosticoData);
-
-        // Calculamos estadísticas a partir del pronóstico semanal.
-        const estadisticas = calcularEstadisticas(pronosticoSemanal);
-
-        // Renderizamos todas las secciones del detalle.
-        renderizarCabecera(lugar, climaActualData);
-        renderizarInfoCiudad(lugar);
-        renderizarClimaActual(lugar, climaActualData, estadisticas);
-        renderizarPronostico(pronosticoSemanal, estadisticas);
-    } catch (error) {
-        // Mostramos el error en consola para depuración.
-        console.error("Error al inicializar el detalle:", error);
-
-        // Mostramos un mensaje amigable en pantalla.
-        renderizarError("Ocurrió un problema al cargar el clima o el pronóstico. Intenta nuevamente en unos momentos.");
+    // Si no existe, mostramos error y detenemos la ejecución.
+    if (!comuna) {
+        renderizarError();
+        return;
     }
+
+    // Calculamos estadísticas a partir del pronóstico semanal.
+    const estadisticas = calcularEstadisticas(comuna.pronosticoSemanal);
+
+    // Renderizamos todas las secciones del detalle.
+    renderizarCabecera(comuna);
+    renderizarInfoCiudad(comuna);
+    renderizarClimaActual(comuna, estadisticas);
+    renderizarPronostico(comuna, estadisticas);
 }
 
 // Ejecutamos la función principal al cargar el módulo.
